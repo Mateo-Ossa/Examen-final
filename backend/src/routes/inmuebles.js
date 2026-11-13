@@ -11,7 +11,7 @@ router.get("/", async (req, res) => {
   const condominioId = condominioDeLaPeticion(req);
   const page = Number(req.query.page || 1);
   const limit = Number(req.query.limit || 10);
-  const offset = page * limit;
+  const offset = (page - 1) * limit;
 
   const { rows } = await query(
     `SELECT i.id, i.identificacion, i.torre, i.piso, i.tipo, i.area,
